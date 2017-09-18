@@ -71,8 +71,8 @@ namespace Neo4j.Driver.Internal
 
         public bool IsValid(IPooledConnection connection)
         {
-            return connection.IsOpen 
-                && !HasBeenIdleForTooLong(connection) 
+            return connection.IsOpen
+                && !HasBeenIdleForTooLong(connection)
                 && !HasBeenAliveForTooLong(connection);
         }
 
@@ -88,7 +88,8 @@ namespace Neo4j.Driver.Internal
                 return true;
             }
 
-            return false;
+            // if a connection passed above conditions then it`s probably old??
+            return true;
         }
 
         private bool IsConnectionLifetimeDetectionEnabled()
